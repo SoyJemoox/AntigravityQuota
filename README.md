@@ -106,6 +106,9 @@ npm run lint
 3. **Quota Fetching** – Calls `GetUserStatus` API to retrieve model quotas and prompt credits
 4. **UI Updates** – Parses the response and updates the status bar with formatted quota info
 
+## Disclaimer
+This extension was created by me and Gemini 3 Pro between some Rainbow Six Siege Games, therefore please do not expect the highest code quality in this repo (yet)
+
 ## License
 
 [MIT License](LICENSE)
