@@ -1,6 +1,7 @@
 # Antigravity Quota Watcher
 
 A lightweight VS Code extension that monitors your Antigravity AI model usage quota and displays it in the status bar.
+
 <img src="assets/modal.png" alt="drawing" width="500"/>
 <img src="assets/taskbar.png" alt="drawing" width="500"/>
 
