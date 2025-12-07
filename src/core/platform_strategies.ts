@@ -172,7 +172,10 @@ export class UnixStrategy implements platform_strategy {
 	}
 
 	get_process_list_command(process_name: string): string {
-		return `pgrep -fl ${process_name}`;
+		if (this.platform === 'darwin') {
+			return `pgrep -fl ${process_name}`;
+		}
+		return `pgrep -af ${process_name}`;
 	}
 
 	parse_process_info(stdout: string): {pid: number; extension_port: number; csrf_token: string} | null {

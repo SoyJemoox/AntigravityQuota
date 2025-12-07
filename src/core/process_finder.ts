@@ -30,7 +30,7 @@ export class ProcessFinder {
 			this.process_name = `language_server_macos${process.arch === 'arm64' ? '_arm' : ''}`;
 		} else {
 			this.strategy = new UnixStrategy('linux');
-			this.process_name = 'language_server_linux';
+			this.process_name = `language_server_linux${process.arch === 'arm64' ? '_arm' : '_x64'}`;
 		}
 	}
 
@@ -38,7 +38,6 @@ export class ProcessFinder {
 		for (let i = 0; i < max_retries; i++) {
 			try {
 				const cmd = this.strategy.get_process_list_command(this.process_name);
-				// console.log(`Executing: ${cmd}`);
 				const {stdout} = await exec_async(cmd, {timeout: 2000});
 
 				const info = this.strategy.parse_process_info(stdout);
@@ -58,9 +57,8 @@ export class ProcessFinder {
 			} catch (e) {
 				console.error(`Attempt ${i + 1} failed:`, e);
 			}
-			// Only wait if we're going to retry
 			if (i < max_retries - 1) {
-				await new Promise(r => setTimeout(r, 100)); // Minimal delay
+				await new Promise(r => setTimeout(r, 100));
 			}
 		}
 		return null;
@@ -87,10 +85,6 @@ export class ProcessFinder {
 
 	private test_port(port: number, csrf_token: string): Promise<boolean> {
 		return new Promise(resolve => {
-			// Using native https for testing to avoid axios dep in this specific check if strict separation,
-			// but actually I should use axios everywhere if I can.
-			// However the test is a simple connectivity check. I'll stick to native here for zero-dep reliability in this low level module,
-			// but QuotaManager will use axios.
 			const options = {
 				hostname: '127.0.0.1',
 				port,
@@ -113,7 +107,7 @@ export class ProcessFinder {
 				req.destroy();
 				resolve(false);
 			});
-			req.write(JSON.stringify({wrapper_data: {}})); // Minimal body
+			req.write(JSON.stringify({wrapper_data: {}}));
 			req.end();
 		});
 	}
