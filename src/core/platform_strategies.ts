@@ -1,4 +1,3 @@
-
 export interface platform_strategy {
 	get_process_list_command(process_name: string): string;
 	parse_process_info(stdout: string): {pid: number; extension_port: number; csrf_token: string} | null;
@@ -85,8 +84,7 @@ export class WindowsStrategy implements platform_strategy {
 				const csrf_token = token_match[1];
 
 				return {pid, extension_port, csrf_token};
-			} catch (e) {
-			}
+			} catch (e) {}
 		}
 		const blocks = stdout.split(/\n\s*\n/).filter(block => block.trim().length > 0);
 
@@ -130,12 +128,33 @@ export class WindowsStrategy implements platform_strategy {
 	}
 
 	get_port_list_command(pid: number): string {
-		return `netstat -ano | findstr "${pid}" | findstr "LISTENING"`;
+		if (this.use_powershell) {
+			return `powershell -NoProfile -Command "Get-NetTCPConnection -OwningProcess ${pid} -State Listen | Select-Object -ExpandProperty LocalPort | ConvertTo-Json"`;
+		}
+		return `netstat -ano | findstr "${pid}"`;
 	}
 
 	parse_listening_ports(stdout: string): number[] {
-		const port_regex = /(?:127\.0\.0\.1|0\.0\.0\.0|\[::1?\]):(\d+)\s+\S+\s+LISTENING/gi;
 		const ports: number[] = [];
+		if (this.use_powershell) {
+			try {
+				const data = JSON.parse(stdout.trim());
+				if (Array.isArray(data)) {
+					for (const port of data) {
+						if (typeof port === 'number' && !ports.includes(port)) {
+							ports.push(port);
+						}
+					}
+				} else if (typeof data === 'number') {
+					ports.push(data);
+				}
+			} catch (e) {
+				// Fallback or ignore parse errors (e.g. empty output)
+			}
+			return ports.sort((a, b) => a - b);
+		}
+
+		const port_regex = /(?:127\.0\.0\.1|0\.0\.0\.0|\[::1?\]):(\d+)\s+(?:0\.0\.0\.0:0|\[::\]:0|\*:\*)/gi;
 		let match;
 
 		while ((match = port_regex.exec(stdout)) !== null) {
@@ -158,7 +177,7 @@ export class WindowsStrategy implements platform_strategy {
 				'Antigravity is running',
 				'language_server_windows_x64.exe process is running',
 				this.use_powershell
-					? 'The system has permission to run PowerShell and netstat commands'
+					? 'The system has permission to run PowerShell commands (Get-CimInstance, Get-NetTCPConnection)'
 					: 'The system has permission to run wmic/PowerShell and netstat commands (auto-fallback supported)',
 			],
 		};

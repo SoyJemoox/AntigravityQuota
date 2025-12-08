@@ -12,7 +12,7 @@ const MODEL_ABBREVIATIONS: Record<string, string> = {
 	'Claude Sonnet 4.5': 'Claude S4.5',
 	'Claude Sonnet 4.5 (Thinking)': 'Claude S4.5T',
 	'Claude Opus 4.5 (Thinking)': 'Claude O4.5T',
-	'GPT-O3S 1208 (Medium)': 'GPT-O3S (M)',
+	'GPT-OSS 120B (Medium)': 'GPT-OSS (M)',
 };
 
 /** Get short abbreviation for a model label */
@@ -65,11 +65,11 @@ export class StatusBarManager {
 		const pinned = this.get_pinned_models();
 		const parts: string[] = [];
 
-		if (show_credits && snapshot.prompt_credits) {
+		/*if (show_credits && snapshot.prompt_credits) {
 			const pc = snapshot.prompt_credits;
 			const icon = pc.remaining_percentage > 20 ? '$(check)' : '$(warning)';
 			parts.push(`${icon} Credits: ${pc.available}/${pc.monthly}`);
-		}
+		}*/
 
 		// Filter models to only show pinned ones
 		const pinned_models = snapshot.models.filter(m => pinned.includes(m.model_id));
@@ -186,17 +186,18 @@ export class StatusBarManager {
 			});
 		}
 
-		if (snapshot?.prompt_credits) {
+		// Commented out until used (if ever)
+		/*if (snapshot?.prompt_credits) {
 			const pc = snapshot.prompt_credits;
 			const bar = this.draw_progress_bar(pc.remaining_percentage);
 
 			items.push({label: '', kind: vscode.QuickPickItemKind.Separator});
-			items.push({label: 'Prompt Credits', kind: vscode.QuickPickItemKind.Separator});
+			items.push({label: 'Prompt Credits (Not activly used)', kind: vscode.QuickPickItemKind.Separator});
 			items.push({
 				label: `$(credit-card) ${pc.available.toLocaleString()} / ${pc.monthly.toLocaleString()}`,
 				description: `${bar} ${pc.remaining_percentage.toFixed(1)}%`,
 			});
-		}
+		}*/
 
 		return items;
 	}

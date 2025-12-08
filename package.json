@@ -2,7 +2,7 @@
   "name": "ag-quota",
   "displayName": "Antigravity Quota (AGQ)",
   "description": "VS Code extension for the Antigravity IDE to monitor the usage of the models",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "henrikdev",
   "icon": "assets/AntiGravityQuota.png",
   "engines": {
@@ -49,6 +49,12 @@
           },
           "description": "Model IDs to display in the status bar. If empty, shows 'AGQ'.",
           "order": 3
+        },
+        "agq.showPromptCredits": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show prompt credits in the status bar.",
+          "order": 4
         }
       }
     }
