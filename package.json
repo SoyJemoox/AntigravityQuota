@@ -2,7 +2,7 @@
   "name": "ag-quota",
   "displayName": "Antigravity Quota (AGQ)",
   "description": "VS Code extension for the Antigravity IDE to monitor the usage of the models",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "henrikdev",
   "icon": "assets/AntiGravityQuota.png",
   "engines": {
@@ -15,7 +15,9 @@
     "onStartupFinished",
     "onCommand:agq.refresh",
     "onCommand:agq.show_menu",
-    "onCommand:agq.activate"
+    "onCommand:agq.activate",
+    "onCommand:agq.reconnect",
+    "onCommand:agq.show_logs"
   ],
   "main": "./export/extension.js",
   "contributes": {
@@ -23,6 +25,14 @@
       {
         "command": "agq.refresh",
         "title": "AGQ: Refresh Now"
+      },
+      {
+        "command": "agq.reconnect",
+        "title": "AGQ: Reconnect"
+      },
+      {
+        "command": "agq.show_logs",
+        "title": "AGQ: Show Debug Log"
       }
     ],
     "configuration": {
