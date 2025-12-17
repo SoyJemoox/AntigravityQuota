@@ -9,6 +9,7 @@ import {quota_snapshot, model_quota_info} from '../utils/types';
 const MODEL_ABBREVIATIONS: Record<string, string> = {
 	'Gemini 3 Pro (High)': 'Gemini 3 Pro (H)',
 	'Gemini 3 Pro (Low)': 'Gemini 3 Pro (L)',
+	'Gemini 3 Flash': 'Gemini 3 Flash',
 	'Claude Sonnet 4.5': 'Claude S4.5',
 	'Claude Sonnet 4.5 (Thinking)': 'Claude S4.5T',
 	'Claude Opus 4.5 (Thinking)': 'Claude O4.5T',
