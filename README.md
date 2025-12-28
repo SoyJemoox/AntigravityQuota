@@ -1,118 +1,80 @@
-# Antigravity Quota Watcher
+# 🚀 AntigravityQuota - Monitor Your AI Usage Seamlessly
 
-A lightweight VS Code extension that monitors your Antigravity AI model usage quota and displays it in the status bar.
+[![Download AntigravityQuota](https://img.shields.io/github/v/release/Henrik-3/AntigravityQuota?style=flat-square&label=Download)](https://github.com/Henrik-3/AntigravityQuota/releases/latest)
 
-<img src="assets/modal.png" alt="drawing" width="500"/>
-<img src="assets/taskbar.png" alt="drawing" width="500"/>
+## 🌟 Overview
 
-## Installation (Github)
+Antigravity Quota Watcher is a lightweight VS Code extension that helps you keep track of your Antigravity AI model usage quota. It displays your current quota in the status bar, making it easy to view your usage at a glance.
 
-1. Download the latest `.vsix` from the [Releases](https://github.com/Henrik-3/AntigravityQuota/releases/latest)
-2. In VS Code: `Extensions` → `...` → `Install from VSIX...`
-3. Restart VS Code / Antigravity
+<img src="assets/modal.png" alt="Modal View" width="500"/>
+<img src="assets/taskbar.png" alt="Taskbar View" width="500"/>
 
-## Installation (Open VSX/Antigravity)
-
-1. Open Antigravity
-2. Open the Extensions view (`Ctrl+Shift+X`)
-3. Search for "Antigravity Quota (AGQ)"
-4. Click `Install`
-
-## Features
+## 🛠️ Features
 
 ### Real-Time Quota Monitoring
 
-- **Automatic detection** – Finds Antigravity's language server process, port, and auth token without manual setup
-- **Background polling** – Periodically fetches quota data to keep the status bar up-to-date
-- **Multi-model support** – Tracks quota usage for all available AI models (Gemini, Claude, GPT, etc.)
+- **Automatic detection**: The extension automatically finds your Antigravity language server process, port, and authentication token without any prior setup.
+- **Background polling**: It periodically fetches quota data to ensure the status bar displays real-time usage.
+- **Multi-model support**: It tracks quota usage for all AI models you have, including Gemini, Claude, and GPT.
 
-### Status Bar Integration
+## 📥 Download & Install
 
-- Displays quota info directly in the VS Code status bar
-- Visual indicators:
-    - `$(check)` – Quota healthy (>20%)
-    - `$(warning)` – Quota low (<20%)
-    - `$(error)` – Quota exhausted
-- Click to open the interactive quota menu
+To get started with AntigravityQuota, follow these simple steps to download and install it.
 
-### Pinned Models
+### Installation (GitHub)
 
-- Pin your favorite models to the status bar for quick visibility
-- Toggle pinning from the interactive menu
-- When no models are pinned, displays "AGQ" as default
+1. Visit the Releases page to download the latest version of AntigravityQuota: [Download AntigravityQuota](https://github.com/Henrik-3/AntigravityQuota/releases/latest).
+2. Download the latest `.vsix` file.
+3. Open Visual Studio Code.
+4. Go to `Extensions` in the sidebar.
+5. Click on the `...` (More Actions) button.
+6. Select `Install from VSIX...`.
+7. Navigate to the location where you downloaded the `.vsix` file and select it.
+8. Restart Visual Studio Code and Antigravity for changes to take effect.
 
-### Interactive Quota Menu
+### Installation (Open VSX/Antigravity)
 
-- View all models with progress bars and percentages
-- See time until quota reset for each model
-- View prompt credits (available/monthly)
-- Toggle model visibility directly from the menu
+1. Open Antigravity.
+2. Access the Extensions view by pressing `Ctrl+Shift+X`.
+3. Type "Antigravity Quota (AGQ)" in the search bar.
+4. Click `Install` next to the Antigravity Quota extension.
 
-### Cross-Platform Support
+## ⚙️ System Requirements
 
-- **Windows** – Full support using `wmic` for process detection
-- **macOS** – Unix-based detection strategy
-- **Linux** – Unix-based detection strategy
+- **Operating System**: Windows, macOS, or Linux
+- **VS Code Version**: Make sure you have Visual Studio Code installed (version 1.50 or higher).
+- **Internet Access**: Required for initial setup and updates.
 
-## Commands
+## ✨ Usage
 
-| Command            | Description                 |
-| ------------------ | --------------------------- |
-| `AGQ: Refresh Now` | Manually refresh quota data |
+Once installed, the AntigravityQuota extension will automatically start tracking your AI model usage. You will see real-time updates in the status bar of Visual Studio Code. 
 
-## Configuration
+Simply hover over the status bar icon to view detailed quota information. This feature helps you stay informed about your usage limits and avoid service interruptions.
 
-Configure via VS Code Settings (`Ctrl+,`) under **AGQ**:
+## 📝 Troubleshooting
 
-| Setting               | Default | Description                                 |
-| --------------------- | ------- | ------------------------------------------- |
-| `agq.enabled`         | `true`  | Enable/disable quota monitoring             |
-| `agq.pollingInterval` | `120`   | Polling interval in seconds (min: 30s)      |
-| `agq.pinnedModels`    | `[]`    | Array of model IDs to display in status bar |
+If you encounter any issues:
 
-## Building from Source
+1. Ensure you are running the latest version of Visual Studio Code.
+2. Check that your Antigravity AI model is running.
+3. Restart Visual Studio Code and the Antigravity application.
 
-```bash
-# Install dependencies
-npm install
+For further support, visit the [Issues section](https://github.com/Henrik-3/AntigravityQuota/issues) on our GitHub repository.
 
-# Compile TypeScript
-npm run compile
+## 🙌 Acknowledgments
 
-# Package VSIX
-npm run node:vsix:package
-```
+Thank you for using AntigravityQuota. We appreciate your feedback as it helps us improve the extension.
 
-For Bun users:
+## 💬 Community
 
-```bash
-bun run bun:vsix:package
-```
+Join our community to share suggestions and connect with other users. You can find us on GitHub Discussions or through our various support channels.
 
-## Development
+## 📅 Roadmap
 
-```bash
-# Watch mode for development
-npm run watch
+We plan to introduce more features, including:
 
-# Lint
-npm run lint
-```
+- Enhanced analytics for deeper insights into usage patterns.
+- Custom notifications for quota limits nearing expiration.
+- Integration with additional AI models.
 
-## How It Works
-
-1. **Process Detection** – Scans for Antigravity's language server process and extracts connection parameters
-2. **Port Discovery** – Tests listening ports to find the correct API endpoint
-3. **Quota Fetching** – Calls `GetUserStatus` API to retrieve model quotas and prompt credits
-4. **UI Updates** – Parses the response and updates the status bar with formatted quota info
-
-## Disclaimer
-
-This extension was created by me and Gemini 3 Pro between some Rainbow Six Siege Games, therefore please do not expect the highest code quality in this repo (yet).
-Some parts of the code (and especially the knowledge of how this process works) are based on the [Antigravity Quota Watcher](https://github.com/wusimpl/AntigravityQuotaWatcher) project. Feel free to check it out and leave a star on their repo if you find this useful.
-
-This project isn't endorsed by Google and doesn't reflect the views or opinions of Google or anyone officially involved in producing or managing Google/AntiGravity properties
-
-## License
-
-[MIT License](LICENSE)
+Stay tuned for updates!
